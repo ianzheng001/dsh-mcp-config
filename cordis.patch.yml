@@ -1,0 +1,10 @@
+# dsh-mcp-config bundle patch: ADDITIVE.
+#
+# Inserts exactly one plugin-owned row and touches nothing else. The row is
+# addressed as `mcp-config` in a profile's cordis.patch.yml if that profile needs
+# to disable it or change where new servers are written; the plugin itself takes
+# no configuration — the servers it manages ARE the other Loader entries of
+# `@deepseek-ai/dsh-mcp-client` in the two user patch layers.
+- insert:
+    - id: mcp-config
+      name: 'dsh-mcp-config'
