@@ -44,12 +44,14 @@ dsh 把每个 MCP server 实现成一个 Loader 条目（插件 `@deepseek-ai/ds
 
 ```bash
 # 直接从仓库装（pnpm 会 clone 整个仓库；推荐）
-dsh plugin --profile web add https://github.com/ianzheng001/dsh-mcp-config
+dsh plugin --profile web add git+https://github.com/ianzheng001/dsh-mcp-config.git
 
 # 或者先 clone，再按本地绝对路径装（开发时用这个，改代码只需重启）
-git clone https://github.com/ianzheng001/dsh-mcp-config ~/git/dsh-mcp-config
+git clone https://github.com/ianzheng001/dsh-mcp-config.git ~/git/dsh-mcp-config
 dsh plugin --profile web add ~/git/dsh-mcp-config
 ```
+
+注意 **`git+https://` 前缀不能省**：不带 `git+` 的 https 地址会被 pnpm 当成 tarball 去下载，报 `ERR_PNPM_TARBALL_EXTRACT`。git 形式的完整写法是 `git+https://<host>/<org>/<repo>.git`。
 
 `dsh plugin add` 读到包里的 `dsh.bundle.patch` 会自动把 `dsh-mcp-config` 加进 profile 的 bundle 栈；bundle patch 只 **insert** 一条自己的 row（`mcp-config`），不动别人的条目。
 
@@ -65,7 +67,7 @@ Desktop 走独立的 `desktop` profile，而且 **homebrew 的 dsh 会拒绝操�
 # 1) 完全退出 App（Cmd+Q，确认进程消失）
 # 2) 装（注意是 App 自带的 dsh，不是 homebrew 的）
 "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
-  plugin --profile desktop add https://github.com/ianzheng001/dsh-mcp-config
+  plugin --profile desktop add git+https://github.com/ianzheng001/dsh-mcp-config.git
 # 3) 重新打开 App
 open -a "DeepSeek Harness"
 ```
