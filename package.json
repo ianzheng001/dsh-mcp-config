@@ -1,7 +1,7 @@
 {
   "name": "dsh-mcp-config",
   "version": "0.2.1",
-  "description": "Manage DeepSeek Harness MCP servers from Settings: enable/disable, add, edit, delete, and test the connection (credentials live in env/headers). Edits the user patch files and lets the Loader hot-mount, so no restart is needed.",
+  "description": "Manage DeepSeek Harness (dsh) MCP servers from Settings: enable/disable, add, edit, delete, test the connection, and one-click OAuth. Edits the user patch files and lets the Loader hot-mount — no restart needed.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -43,5 +43,13 @@
         "@deepseek-ai/dsh-client-ui-settings"
       ]
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianzheng001/dsh-mcp-config.git"
+  },
+  "homepage": "https://github.com/ianzheng001/dsh-mcp-config#readme",
+  "bugs": {
+    "url": "https://github.com/ianzheng001/dsh-mcp-config/issues"
   }
 }
